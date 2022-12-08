@@ -12,31 +12,37 @@ namespace Stopwatch
 
         static void Menu()
         {
-            Console.Clear();
             Console.WriteLine("S = Segundo => 10s = 10 segundos");
             Console.WriteLine("M = Minuto => 1m = 1 minuto");
+            Console.WriteLine("Quanto tempo deseja contar?");
             Console.WriteLine("0 = Sair");
-            Console.WriteLine("Quanto tempo deseja rodar?");
 
-            string data = Console.ReadLine().ToLower();
-            Console.WriteLine(data);
+            string data = Console.ReadLine().ToLower();     // ToLower converte tudo para minúsculo
+            
+            char type = char.Parse(data.Substring(data.Length -1, 1));            // Todo tipo string pode ser cortado através do Substring
+                                                                                  // data.Length = quantidade de caracteres que o usuário digitou
+            int time = int.Parse(data.Substring(0, data.Length -1));
 
+            
+            Console.WriteLine(type);
+            Console.WriteLine(time);
         }
+
         static void Start(int time)
         {
+           
             int currentTime = 0;
-            while (currentTime != time)
+            while (currentTime != time)     // Condição
             {
                 Console.Clear();
-                currentTime++;
+                currentTime ++;             // Incremento
                 Console.WriteLine(currentTime);
-                Thread.Sleep(1000); //Thread é a execução atual
+                Thread.Sleep(1000);             // Thread é a execução atual
             }
 
             Console.Clear();
-            Console.WriteLine("Stopwatch finalizado... retornando para o menu");
-            Thread.Sleep(5);
+            Console.WriteLine("Stopwatch finalizado");
+            Thread.Sleep(2000);
         }
-
     }
 }
